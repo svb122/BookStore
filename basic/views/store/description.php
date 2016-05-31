@@ -1,0 +1,11 @@
+<?php
+use yii\helpers\Url;
+use yii\helpers\Html;
+?>
+<div class="row">
+<div class="page-header">
+  <h1>Book Store <small>the project's description</small></h1>
+</div>
+  <p class="lead">This application is imitation of the online book store, and is designed to Yii2 for training purposes. As a template selected basic. The application consists of the frontend and backend parts. The operation of the frontend is provided StoreController and partially OrderController. The functioning of the backend - AdminController, BookController, CategoryController and partially OrderController. StoreController responsible for external representation of the visitors' book, book search, organization and work of the visitor with a shopping cart. OrderController carries visitors orders add (frontend part) and their subsequent processing store (the backend part). AdminController responsible for managing users store - administrators, editors. BookController building full of books and management infrastructure of their data, including the control of their images. CategoryController manages categories of books. The database consists of 60 books, divided into 3 categories. Store management provides the administrator and editor.</p>
+  <p class="lead">Данное приложение представляет собой некую имитацию книжного интернет-магазина и разработано на Yii2  в тренировочных целях. В качестве шаблона выбран basic. Приложение состоит из frontend и backend частей. Функционирование  frontend части обеспечивается StoreController и частично OrderController. Функционирование  backend части - AdminController, BookController, CategoryController и частично OrderController. StoreController отвечает за внешнее представление книг посетителю, организацию поиска книг, и работу посетителя с корзиной покупок. OrderController осуществляет добавление ордеров посетителями (frontend часть) и их последующую обработку магазином (backend часть). AdminController отвечает за управление пользователями магазина – администраторы, редакторы. BookController строит полную инфраструктуру управления книгами и их данными, в том числе и управление их изображениями. CategoryController управляет категориями книг. В базе данных находится 60 книг, разбитых на 3 категории. Управление магазином обеспечивают администратор и редактор.</p>
+</div>
