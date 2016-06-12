@@ -1,4 +1,9 @@
 <?php
+/**
+ * @package BookStore\controllers
+ * @uses yii\web\Controller
+ */
+
 
 namespace app\controllers;
 

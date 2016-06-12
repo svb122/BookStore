@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\config
+ * @return Array configures connection to MySql server
+ */
 
 return [
     'class' => 'yii\db\Connection',

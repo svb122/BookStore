@@ -1,4 +1,10 @@
 <?php
+/**
+ * @package BookStore\config
+ * @var Array $params email configuration
+ * @var Array $db configures connection to MySql server
+ * @return Array configures console application
+ */
 
 Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
 

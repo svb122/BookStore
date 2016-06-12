@@ -1,4 +1,9 @@
 <?php
+/**
+ * @package BookStore\controllers
+ * @uses yii\web\Controller
+ */
+
 
 namespace app\controllers;
 
@@ -15,8 +20,14 @@ use yii\filters\AccessControl;
  */
 class CategoryController extends Controller
 {
+    /**
+     * @var string determine layout
+     */
     public $layout = 'admin';
 	
+    /**
+     * @return Array configuration behaviors
+     */
     public function behaviors()
     {
         return [
@@ -44,7 +55,7 @@ class CategoryController extends Controller
 
     /**
      * Lists all Category models.
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionIndex()
     {
@@ -60,7 +71,7 @@ class CategoryController extends Controller
     /**
      * Displays a single Category model.
      * @param string $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionView($id)
     {
@@ -72,7 +83,7 @@ class CategoryController extends Controller
     /**
      * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionCreate()
     {
@@ -91,7 +102,7 @@ class CategoryController extends Controller
      * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionUpdate($id)
     {
@@ -110,7 +121,7 @@ class CategoryController extends Controller
      * Deletes an existing Category model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionDelete($id)
     {

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\controllers
+ * @uses yii\web\Controller
+ */
 
 namespace app\controllers;
 
@@ -11,10 +15,19 @@ use app\models\userEditForm;
 use app\models\AddUserform;
 use yii\filters\AccessControl;
 
+/**
+ * Class AdminController implements the CRUD actions for UserActivRecord model and it's data
+ */
 class AdminController extends Controller
 {
+    /**
+     * @var string determine layout
+     */
     public $layout = 'admin';
-	
+    
+    /**
+     * @return Array configuration behaviors
+     */
     public function behaviors()
     {
         return [
@@ -42,6 +55,9 @@ class AdminController extends Controller
         ];
     }
 	
+    /**
+     * @return mixed The result of the action.
+     */
     public function actionIndex()
     {
         $query = UserActivRecord::find();
@@ -60,6 +76,9 @@ class AdminController extends Controller
         ]);
     }
 	
+    /**
+     * @return mixed The result of the action.
+     */
     public function actionCreate()
     {
         $model = new AddUserform();
@@ -83,6 +102,10 @@ class AdminController extends Controller
         }
     }
 	
+    /**
+     * @param string $id identyficator of users
+     * @return mixed The result of the action.
+     */
     public function actionDetails($id)
     {
         $user = UserActivRecord::findOne($id);
@@ -90,6 +113,11 @@ class AdminController extends Controller
         return $this->renderAjax('details', ['title'=> $user->username, 'model' => $user]);
     }
 	
+    /**
+     * @param int $id identyficator of users
+     * @param string $id $confirm confirms delete user
+     * @return mixed The result of the action.
+     */
     public function actionDelete($id, $confirm = true)
     {
         if($confirm){
@@ -101,7 +129,11 @@ class AdminController extends Controller
             return $this->redirect(['index']);
         }
     }
-	
+	/**
+     * @method mixed updates user data
+     * @param string $id identyficator of users
+     * @return mixed The result of the action.
+     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -116,6 +148,11 @@ class AdminController extends Controller
         }
     }
 	
+    /**
+     * @method mixed change user password
+     * @param string $id identyficator of users
+     * @return mixed The result of the action.
+     */
     public function actionChangepassword($id){
         $model = new PasswordForm($id);
         $modeluser = UserActivRecord::findOne($id);
@@ -138,6 +175,13 @@ class AdminController extends Controller
         }
     }
 	
+    /**
+     * Finds the Book model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param string $id
+     * @return Book the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
     protected function findModel($id)
     {
         if (($model = UserActivRecord::findOne($id)) !== null) {

@@ -1,4 +1,10 @@
 <?php
+/**
+ * @package BookStore\config
+ * @var Array $params configure
+ * @var Array $config web application configuration
+ * @return Array web application configuration
+ */
 
 $params = require(__DIR__ . '/params.php');
 

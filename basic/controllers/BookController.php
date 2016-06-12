@@ -1,4 +1,9 @@
 <?php
+/**
+ * @package BookStore\controllers
+ * @uses yii\web\Controller
+ */
+
 
 namespace app\controllers;
 
@@ -13,12 +18,18 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * BookController implements the CRUD actions for Book model.
+ * Class BookController implements the CRUD actions for Book model and it's data
  */
 class BookController extends Controller
 {
+    /**
+     * @var string determine layout
+     */
     public $layout = 'admin';
 	
+    /**
+     * @return Array configuration behaviors
+     */
     public function behaviors()
     {
         return [
@@ -46,7 +57,7 @@ class BookController extends Controller
 
     /**
      * Lists all Book models.
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionIndex()
     {
@@ -62,7 +73,7 @@ class BookController extends Controller
     /**
      * Displays a single Book model.
      * @param string $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionView($id)
     {
@@ -74,7 +85,7 @@ class BookController extends Controller
     /**
      * Creates a new Book model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionCreate()
     {
@@ -97,6 +108,12 @@ class BookController extends Controller
         ]);
     }
 	
+    /**
+     * Updates an existing Book model image.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param string $id
+     * @return mixed The result of the action.
+     */
     public function actionUpdateImage($id)
     {
         $model = $this->findModel($id);
@@ -122,7 +139,7 @@ class BookController extends Controller
      * Updates an existing Book model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionUpdate($id)
     {
@@ -141,7 +158,7 @@ class BookController extends Controller
      * Deletes an existing Book model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionDelete($id)
     {
