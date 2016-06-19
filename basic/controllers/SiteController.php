@@ -14,8 +14,14 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+/**
+ * SiteController implements the typical site functions.
+ */
 class SiteController extends Controller
 {
+    /**
+     * @return Array configuration behaviors
+     */
     public function behaviors()
     {
         return [
@@ -38,7 +44,10 @@ class SiteController extends Controller
             ],
         ];
     }
-
+    
+    /**
+     * @return Array configuration actions
+     */
     public function actions()
     {
         return [
@@ -52,11 +61,19 @@ class SiteController extends Controller
         ];
     }
 
+    /**
+     * Show main page.
+     * @return mixed The result of the action.
+     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
+    /**
+     * Show login page, if authorize redirected to book controller 'index' page.
+     * @return mixed The result of the action.
+     */
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
@@ -72,6 +89,10 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Logout and redirected to 'home' page.
+     * @return mixed The result of the action.
+     */
     public function actionLogout()
     {
         Yii::$app->user->logout();
@@ -79,6 +100,10 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
+    /**
+     * Show contact page
+     * @return mixed The result of the action.
+     */
     public function actionContact()
     {
         $model = new ContactForm();
@@ -92,6 +117,10 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Show about page
+     * @return mixed The result of the action.
+     */
     public function actionAbout()
     {
         return $this->render('about');

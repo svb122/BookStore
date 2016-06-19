@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii
+ */
 
 namespace app\models;
 
@@ -17,7 +21,8 @@ use Yii;
 class Item extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * Define the name of table in database
+     * @return string
      */
     public static function tableName()
     {
@@ -25,7 +30,8 @@ class Item extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * Determines validation rules for Item
+     * @return array the validation rules.
      */
     public function rules()
     {
@@ -36,7 +42,8 @@ class Item extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * Asociate attributes whith labels
+     * @return array
      */
     public function attributeLabels()
     {
@@ -49,6 +56,7 @@ class Item extends \yii\db\ActiveRecord
     }
 
     /**
+     * Get order for Item
      * @return \yii\db\ActiveQuery
      */
     public function getOrder()

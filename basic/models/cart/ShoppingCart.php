@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models\cart
+ * @uses Yii, BookStore\models\cart\CartPositionInterface, yii\base\Component, yii\base\Component, yii\web\Session
+ */
 
 namespace app\models\cart;
 
@@ -10,7 +14,7 @@ use yii\web\Session;
 
 
 /**
- * Class ShoppingCart
+ * Class ShoppingCart implements functionality BookStore\models\cart\CartPositionInterface
  * @property CartPositionInterface[] $positions
  * @property int $count Total count of positions in the cart
  * @property int $cost Total cost of positions in the cart
@@ -27,21 +31,28 @@ class ShoppingCart extends Component
      * @var bool
      */
     public $storeInSession = true;
+    
     /**
      * Session component
      * @var string|Session
      */
     public $session = 'session';
+    
     /**
      * Shopping cart ID to support multiple carts
      * @var string
      */
     public $cartId = __CLASS__;
+    
     /**
      * @var CartPositionInterface[]
      */
     protected $_positions = [];
 
+    /**
+     * Inicialize cart
+     * @return void
+     */
     public function init()
     {
         if ($this->storeInSession)
@@ -50,6 +61,7 @@ class ShoppingCart extends Component
 
     /**
      * Loads cart from session
+     * @return void
      */
     public function loadFromSession()
     {
@@ -60,6 +72,7 @@ class ShoppingCart extends Component
 
     /**
      * Saves cart to the session
+     * @return void
      */
     public function saveToSession()
     {
@@ -70,6 +83,7 @@ class ShoppingCart extends Component
     /**
      * Sets cart from serialized string
      * @param string $serialized
+     * @return void
      */
     public function setSerialized($serialized)
     {
@@ -79,6 +93,7 @@ class ShoppingCart extends Component
     /**
      * @param CartPositionInterface $position
      * @param int $quantity
+     * @return void
      */
     public function put($position, $quantity = 1)
     {
@@ -103,8 +118,10 @@ class ShoppingCart extends Component
     }
 
     /**
+     * Update position quantity
      * @param CartPositionInterface $position
      * @param int $quantity
+     * @return void
      */
     public function update($position, $quantity)
     {
@@ -127,6 +144,7 @@ class ShoppingCart extends Component
     /**
      * Removes position from the cart
      * @param CartPositionInterface $position
+     * @return void
      */
     public function remove($position)
     {
@@ -136,6 +154,7 @@ class ShoppingCart extends Component
     /**
      * Removes position from the cart by ID
      * @param string $id
+     * @return void
      */
     public function removeById($id)
     {
@@ -146,6 +165,7 @@ class ShoppingCart extends Component
 
     /**
      * Remove all positions
+     * @return void
      */
     public function removeAll()
     {
@@ -178,6 +198,7 @@ class ShoppingCart extends Component
     }
 
     /**
+     * Return all items from cart
      * @return CartPositionInterface[]
      */
     public function getPositions()
@@ -186,7 +207,9 @@ class ShoppingCart extends Component
     }
 
     /**
+     * Set $positions to $_positions
      * @param CartPositionInterface[] $positions
+     * @return void
      */
     public function setPositions($positions)
     {
@@ -208,6 +231,7 @@ class ShoppingCart extends Component
     }
 
     /**
+     * Return count of all positions in cart
      * @return int
      */
     public function getCount()

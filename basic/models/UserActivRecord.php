@@ -1,20 +1,45 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii, yii\db\ActiveRecord, yii\web\IdentityInterface
+ */
+
 namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
+/**
+ * This is the model class for table "users".
+ */
 class UserActivRecord extends ActiveRecord implements IdentityInterface
 {
+    /**
+     * @var string ROLE_ADMIN
+     */
     const ROLE_ADMIN = 'admin';
+    
+    /**
+     * @var string ROLE_USER
+     */
     const ROLE_USER = 'user';
 	
+    /**
+     * Define the name of table in database
+     *
+     * @return string
+     */
     public static function tableName()
     {
         return 'users';
     }
 	
+    /**
+     * Asociate attributes whith labels
+     *
+     * @return array
+     */
     public function attributeLabels()
     {
         return [
@@ -24,6 +49,8 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
     }
 	
     /**
+     * Determines validation rules for UserActivRecord
+     *
      * @return array the validation rules.
      */
     public function rules()
@@ -46,6 +73,12 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
         return static::findOne($id);
     }
 	
+    /**
+     * Finds user by username
+     *
+     * @param  string $username
+     * @return static|null
+     */
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username]);
@@ -63,7 +96,9 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return int|string current user ID
+     * Get id
+     *
+     * @return string
      */
     public function getId()
     {
@@ -71,6 +106,8 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Get auth key
+     *
      * @return string current user auth key
      */
     public function getAuthKey()
@@ -79,6 +116,8 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Validate auth key
+     *
      * @param string $authKey
      * @return boolean if auth key is valid for current user
      */
@@ -89,6 +128,7 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
 	
     /**
      * Validates password
+     *
      * @param  string  $password password to validate
      * @return boolean if password provided is valid for current user
      */
@@ -100,6 +140,12 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
         else return false;
     }
 	
+    /**
+     * Validate role admin for current user
+     *
+     * @param string $username
+     * @return boolean if user is admin role true, else false
+     */
     public static function isUserAdmin($username)
     {
         if (static::findOne(['username' => $username, 'roleId' => self::ROLE_ADMIN]))
@@ -110,6 +156,12 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
         }
     }
 	
+     /**
+     * Validate role user for current user
+     *
+     * @param string $username
+     * @return boolean if user is user role true, else false. Admin is user role automatic
+     */
     public static function isUser($username)
     {
         if (static::findOne(['username' => $username, 'roleId' => self::ROLE_USER]))
@@ -121,11 +173,21 @@ class UserActivRecord extends ActiveRecord implements IdentityInterface
         }
     }
 	
+     /**
+     * Get role admin value
+     *
+     * @return string
+     */
     public function getAdminRole()
     {
         return self::ROLE_ADMIN;
     }
 	
+    /**
+     * Get role user value
+     *
+     * @return string
+     */
     public function getUserRole()
     {
         return self::ROLE_USER;

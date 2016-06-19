@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii, yii\base\Model, yii\base\Model, BookStore\models\Category
+ */
 
 namespace app\models;
 
@@ -13,7 +17,8 @@ use app\models\Category;
 class CategorySearch extends Category
 {
     /**
-     * @inheritdoc
+     * Determines validation rules for BookSearch form
+     * @return array
      */
     public function rules()
     {
@@ -24,7 +29,8 @@ class CategorySearch extends Category
     }
 
     /**
-     * @inheritdoc
+     * Get model scenarios
+     * @return array Array of scenarios base class Model
      */
     public function scenarios()
     {

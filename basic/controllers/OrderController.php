@@ -21,7 +21,14 @@ use yii\filters\AccessControl;
  */
 class OrderController extends Controller
 {
+    /**
+     * @var string determine layout
+     */
     public $layout = 'admin';
+    
+    /**
+     * @return Array configuration behaviors
+     */
     public function behaviors()
     {
         return [
@@ -62,7 +69,7 @@ class OrderController extends Controller
 
     /**
      * Lists all Order models.
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionIndex()
     {
@@ -78,7 +85,7 @@ class OrderController extends Controller
     /**
      * Displays a single Order model.
      * @param integer $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionView($id)
     {
@@ -90,7 +97,7 @@ class OrderController extends Controller
     /**
      * Creates a new Order model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionCreate()
     {
@@ -123,7 +130,7 @@ class OrderController extends Controller
      * Updates an existing Order model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionUpdate($id)
     {
@@ -142,7 +149,7 @@ class OrderController extends Controller
      * Deletes an existing Order model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @return mixed
+     * @return mixed The result of the action.
      */
     public function actionDelete($id)
     {

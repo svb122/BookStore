@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii, yii\base\Model, yii\web\UploadedFile
+ */
 namespace app\models;
 
 use Yii;
@@ -14,9 +18,15 @@ class UploadForm extends Model
      * @var UploadedFile file attribute
      */
     public $file;
+    
+    /**
+     * @var string url adress of uploaden file in server
+     */
     public $src;
 
     /**
+     * Determines validation rules for UploadForm
+     *
      * @return array the validation rules.
      */
     public function rules()
@@ -27,6 +37,11 @@ class UploadForm extends Model
         ];
     }
 	
+    /**
+     * Upload image to server
+     *
+     * @return bool if file successfuly uploaded true, else - false
+     */
     public function upload()
     {
         if ($this->validate()) {

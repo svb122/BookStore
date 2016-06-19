@@ -1,12 +1,13 @@
 <?php
+/**
+ * @package BookStore\models\cart
+ */
 
 namespace app\models\cart;
 
 
 /**
- * Interface CartItemInterface
- * @property string $id
- * @property int $quantity
+ * Interfae determine functions of cart item
  */
 interface CartPositionInterface
 {
@@ -17,6 +18,7 @@ interface CartPositionInterface
 
     /**
      * @param int $quantity
+     * @return void
      */
     public function setQuantity($quantity);
 

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii, yii\base\Model
+ */
 
 namespace app\models;
 
@@ -10,13 +14,33 @@ use yii\base\Model;
  */
 class ContactForm extends Model
 {
+    /**
+     *@var string $name
+     */
     public $name;
+    
+    /**
+     *@var string $email
+     */
     public $email;
+    
+    /**
+     *@var string $subject
+     */
     public $subject;
+    
+    /**
+     *@var string $body
+     */
     public $body;
+    
+    /**
+     *@var string $verifyCode
+     */
     public $verifyCode;
 
     /**
+     * Determines validation rules for ContactForm
      * @return array the validation rules.
      */
     public function rules()
@@ -32,7 +56,8 @@ class ContactForm extends Model
     }
 
     /**
-     * @return array customized attribute labels
+     * Asociate attributes whith labels
+     * @return array
      */
     public function attributeLabels()
     {

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii,yii\base\Model, yii\data\ActiveDataProvider, app\models\Order
+ */
 
 namespace app\models;
 
@@ -13,7 +17,8 @@ use app\models\Order;
 class OrderSearch extends Order
 {
     /**
-     * @inheritdoc
+     * Determines validation rules for Item
+     * @return array the validation rules.
      */
     public function rules()
     {
@@ -24,7 +29,8 @@ class OrderSearch extends Order
     }
 
     /**
-     * @inheritdoc
+     * Get model scenarios
+     * @return array Array of scenarios base class Model
      */
     public function scenarios()
     {

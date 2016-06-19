@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii, yii\base\Model
+ */
 
 namespace app\models;
 
@@ -10,14 +14,29 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
+    /**
+     *@var string $username
+     */
     public $username;
+    
+    /**
+     *@var string $password
+     */
     public $password;
+    
+    /**
+     *@var bool $rememberMe
+     */
     public $rememberMe = true;
-
+    
+    /**
+     *@var bool $rememberMe
+     */
     private $_user = false;
 
 
-    /**
+   /**
+     * Determines validation rules for Item
      * @return array the validation rules.
      */
     public function rules()

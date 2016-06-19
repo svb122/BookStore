@@ -1,15 +1,43 @@
 <?php
+/**
+ * @package BookStore\models
+ */
 
 namespace app\models;
 
+/**
+ * User is the model behind the authorize imitation for basic application.
+ */
 class User extends \yii\base\Object implements \yii\web\IdentityInterface
 {
+    /**
+     * @var string $id Identity
+     */
     public $id;
+    
+     /**
+     * @var string $username
+     */
     public $username;
+    
+    /**
+     * @var string $password
+     */
     public $password;
+    
+    /**
+     * @var string $authKey
+     */
     public $authKey;
+    
+    /**
+     * @var string $accessToken
+     */
     public $accessToken;
 
+    /**
+     * @var array $users
+     */
     private static $users = [
         '100' => [
             'id' => '100',
@@ -28,7 +56,10 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     ];
 
     /**
-     * @inheritdoc
+     * Get identity
+     *
+     * @param string $id identity
+     * @return static|null
      */
     public static function findIdentity($id)
     {
@@ -36,7 +67,11 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * Find by Access Token
+     *
+     * @param string $token
+     * @param string $type
+     * @return static|null
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
@@ -52,7 +87,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     /**
      * Finds user by username
      *
-     * @param  string      $username
+     * @param  string $username
      * @return static|null
      */
     public static function findByUsername($username)
@@ -67,7 +102,9 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * Get id
+     *
+     * @return string current user auth key
      */
     public function getId()
     {
@@ -75,7 +112,9 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * Get auth key
+     *
+     * @return string
      */
     public function getAuthKey()
     {
@@ -83,7 +122,10 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * Validate auth key
+     *
+     * @param string $authKey
+     * @return boolean if auth key is valid for current user
      */
     public function validateAuthKey($authKey)
     {

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii, yii\db\ActiveRecord yii\base\Model
+ */
 
 namespace app\models;
 
@@ -10,11 +14,24 @@ use yii\base\Model;
  */
 class userEditForm extends Model
 {
+    /**
+     * @var string $id
+     */
     public $id;
+    
+    /**
+     * @var string $username
+     */
     public $username;
+    
+    /**
+     * @var string $roleId
+     */
     public $roleId;
 
     /**
+     * Determines validation rules for userEditForm
+     *
      * @return array the validation rules.
      */
     public function rules()

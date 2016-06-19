@@ -17,9 +17,14 @@ use yii\data\Pagination;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+/**
+ * StoreController implements the BookStore frontend functions.
+ */
 class StoreController extends Controller
 {
-	
+	/**
+     * @return Array configuration behaviors
+     */
     public function behaviors()
     {
         return [
@@ -33,8 +38,9 @@ class StoreController extends Controller
     }
 
     /**
-     * Lists all Book models.
-     * @return mixed
+     * Lists all Book models. Using pagination.
+     * @param string $id
+     * @return mixed The result of the action.
      */
     public function actionIndex($id = null)
     {	
@@ -64,6 +70,10 @@ class StoreController extends Controller
         ]);
     }
 	
+    /**
+     * Find and lists all Book models requested search input. If empty search redireced to 'index' page.
+     * @return mixed The result of the action.
+     */
     public function actionFindBooks()
     {
         $params = Yii::$app->request->queryParams;
@@ -86,6 +96,12 @@ class StoreController extends Controller
         ]);
     }
 	
+    /**
+     * Add Book to cart.
+     * @param string $id
+     * @throw NotFoundHttpException if the Book cannot be found
+     * @return void
+     */
     public function actionAddToCart($id)
     {
         $model = Book::findOne($id);
@@ -99,6 +115,10 @@ class StoreController extends Controller
         throw new NotFoundHttpException();
     }
 	
+    /**
+     * Render 'cart' page.
+     * @return mixed The result of the action.
+     */
     public function actionCart()
     {
         return $this->render('cart', [
@@ -106,6 +126,10 @@ class StoreController extends Controller
         ]);
     }
 	
+    /**
+     * Remove all Books from cart and render 'cart' page.
+     * @return mixed The result of the action.
+     */
     public function actionClearCart()
     {
         $cart = Yii::$app->cart->removeAll();
@@ -114,6 +138,11 @@ class StoreController extends Controller
         ]);
     }
 	
+    /**
+     * Remove a Book (if exists) from cart ad render 'cart' page.
+     * @param string $id
+     * @return mixed The result of the action.
+     */
     public function actionRemoveItem($id)
     {
         $item = Yii::$app->cart->getPositionById($id);
@@ -127,17 +156,27 @@ class StoreController extends Controller
         ]);
     }
 	
+    /**
+     * Render 'description' page.
+     * @return mixed The result of the action.
+     */
     public function actionDescribe()
     {
         return $this->render('description');
     }
 	
+    /**
+     * Render 'details' page to ajax request.
+     * @param string $id
+     * @return mixed The result of the action.
+     */
     public function actionDetails($id)
     {
         return $this->renderAjax('details', [
             'model' => $this->findModel($id),
         ]);
     }
+    
     /**
      * Finds the Book model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

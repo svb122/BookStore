@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii, BookStore\models\cart\CartPositionInterface, BookStore\models\cart\CartPositionTrait
+ */
 
 namespace app\models;
 
@@ -23,7 +27,8 @@ use app\models\cart\CartPositionTrait;
 class Book extends \yii\db\ActiveRecord implements CartPositionInterface
 {
     /**
-     * @inheritdoc
+     * Determine table name 'books'
+     * @return string
      */
     public static function tableName()
     {
@@ -32,13 +37,18 @@ class Book extends \yii\db\ActiveRecord implements CartPositionInterface
 	
     use CartPositionTrait;
 
+    /**
+     * Get id from database this function from CartPositionInterface
+     * @return string $id
+     */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @inheritdoc
+     * Determine validation rules for this class
+     * @return array
      */
     public function rules()
     {
@@ -53,7 +63,8 @@ class Book extends \yii\db\ActiveRecord implements CartPositionInterface
     }
 
     /**
-     * @inheritdoc
+     * Asociate attributes whith labels
+     * @return array
      */
     public function attributeLabels()
     {
@@ -72,6 +83,7 @@ class Book extends \yii\db\ActiveRecord implements CartPositionInterface
     }
 	
     /**
+     * Built array whith categories
      * @return array ($id => $name)
      */
     public function getCategories()
@@ -85,6 +97,8 @@ class Book extends \yii\db\ActiveRecord implements CartPositionInterface
     }
 	
     /**
+     * Getting category name
+     * @param string $id
      * @return string
      */
     public function getCategoryName($id)

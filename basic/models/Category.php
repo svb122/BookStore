@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package BookStore\models
+ * @uses Yii
+ */
 
 namespace app\models;
 
@@ -13,7 +17,8 @@ use Yii;
 class Category extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * Determine table name 'category'
+     * @return string
      */
     public static function tableName()
     {
@@ -21,7 +26,8 @@ class Category extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * Determine validation rules for this class
+     * @return array
      */
     public function rules()
     {
@@ -32,7 +38,8 @@ class Category extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * Asociate attributes whith labels
+     * @return array
      */
     public function attributeLabels()
     {
